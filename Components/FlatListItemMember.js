@@ -31,7 +31,7 @@ class FlatListItemMember extends Component {
                             <FlatListMember item={item} index={index} />
                         )
                     }}
-                    keyExtractor={item => item}
+                    keyExtractor={(item) => item.name}
                 ></FlatList>
                 <Button style={Styles.Button} onPress={() => { this._ShowAddMember() }}>NEW MEMBER</Button>
                 <ModalAddMember ref={'AddMemberModal'} parentModal={this} />

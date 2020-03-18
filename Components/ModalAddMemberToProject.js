@@ -66,7 +66,7 @@ export default class ModalAddMemberToProject extends Component {
                                     </View>
                                 )
                             }}
-                            keyExtractor={item => item}
+                            keyExtractor={(item) => item.name}
                         >
                         </FlatList>
                     </View>

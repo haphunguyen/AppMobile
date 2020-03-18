@@ -1,9 +1,14 @@
 import { ADD_MEMBER_TO_LIST, ADD_MEMBER_TO_PROJECT, ADD_PROJECT_TO_LIST } from '../Actions/ActionTypes'
 
 const initStateMember = [
-    { name: 'Nguyen', phone: '033', project: [] },
-    { name: 'Ha', phone: '556', project: [] },
-    { name: 'Phu', phone: '692', project: [] },
+    { name: 'Ha Phu Nguyen', phone: '0335566929', project: [] },
+    { name: 'Vu Viet Anh', phone: '0163556672', project: [] },
+    { name: 'Do Duc Vuong', phone: '0982314112', project: [] },
+    { name: 'Thai Bao', phone: '0982314112', project: [] },
+    { name: 'Dang Ngoc Trung', phone: '0982314112', project: [] },
+    { name: 'Nguyen Van A', phone: '0982314112', project: [] },
+    { name: 'Nguyen Van B', phone: '0982314112', project: [] },
+    { name: 'Nguyen Van C', phone: '0982314112', project: [] },
 ]
 const initStateProject = [
     { nameProject: 'GrabHotel', listMember: [] },

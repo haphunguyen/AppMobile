@@ -38,7 +38,7 @@ export default class ModalAddMember extends Component {
                     <View style={Styles.ViewButton}>
                         <Button style={Styles.Button} onPress={() => {
                             if (this.state.name == '' || (this.state.phone == '' || this.state.phone.length != 10)) {
-                                alert('Pleasy type enough data!, Phone have Length = 10')
+                                alert('Please type enough data!, Phone have Length = 10')
                                 return;
                             } else {
                                 this.props.parentModal._AddMember(this.state.name, this.state.phone)

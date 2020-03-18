@@ -38,7 +38,7 @@ class FlatListItemProject extends Component {
                             <FlatListProject item={item} index={index} parentFlatList={this} />
                         );
                     }}
-                    keyExtractor={item => item.nameProject}
+                    keyExtractor={(item) => item.nameProject}
                 ></FlatList>
 
                 <Button style={{ margin: 10 }} onPress={() => { this._ShowAddProject() }}>NEW PROJECT</Button>
