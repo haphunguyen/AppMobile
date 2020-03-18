@@ -60,7 +60,7 @@ export default class ModalAddMemberToProject extends Component {
                                             <Text style={{
                                                 fontSize: 20,
                                                 color: this.state.arrayMember.find(mem => mem == item.name) ? 'green' : 'red',
-                                            }}>{item.name}</Text>
+                                            }}>{this.state.arrayMember.find(mem => mem == item.name) ? '==>  ' : 'X  '} {item.name}</Text>
                                         </TouchableOpacity>
 
                                     </View>
