@@ -4,11 +4,19 @@ import { View, StyleSheet, Dimensions, FlatList, TouchableOpacity, Text } from '
 import Button from 'react-native-button';
 
 export default class ModalAddMemberToProject extends Component {
+    constructor(props) {
+        super(props);
+        this.state={
+            arrayMember:[],
+            nameProject:''
+        }
+    }
+    
 
     //Show and hide Modalbox
     _showModal = (nameProject, arrayMember) => {
         this.refs.AddMemberToProjectModal.open()
-        this.state = ({
+        this.setState({
             arrayMember: arrayMember,
             nameProject: nameProject
         })
@@ -33,7 +41,9 @@ export default class ModalAddMemberToProject extends Component {
                     backdrop={true}
                 >
                     <View style={Styles.Container}>
-                        <Text style={Styles.Title}>Please Choose Member!</Text>
+                        <View style={{ justifyContent: 'center', padding: 20, alignItems: 'center' }}>
+                            <Text style={{ fontSize: 20 }}>Choose Member</Text>
+                        </View>
                         <FlatList
                             data={dataMember}
                             renderItem={({ item, index }) => {
@@ -60,7 +70,7 @@ export default class ModalAddMemberToProject extends Component {
                                             <Text style={{
                                                 fontSize: 20,
                                                 color: this.state.arrayMember.find(mem => mem == item.name) ? 'green' : 'red',
-                                            }}>{this.state.arrayMember.find(mem => mem == item.name) ? '==>  ' : 'X  '} {item.name}</Text>
+                                            }}>{this.state.arrayMember.find(mem => mem == item.name) ? '>  ' : 'X  '} {item.name}</Text>
                                         </TouchableOpacity>
 
                                     </View>
@@ -104,8 +114,8 @@ const Styles = StyleSheet.create({
         alignItems: 'center'
     },
     Button: {
-        borderColor: 'skyblue',
-        borderWidth: 2,
+        borderColor: 'blue',
+        borderWidth: 1,
         padding: 10,
         margin: 5,
         borderRadius: 20,
@@ -115,10 +125,10 @@ const Styles = StyleSheet.create({
     ViewModal: {
         flexDirection: 'row',
         padding: 10,
-        borderWidth:0.5
+        // borderWidth: 0.5
     },
     Title: {
         fontSize: 25,
-        marginLeft:screen.width/5
+        marginLeft: screen.width / 5
     }
 })

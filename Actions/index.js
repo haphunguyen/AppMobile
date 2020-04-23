@@ -7,10 +7,11 @@ export const addMemberToList = (name, phone) => {
         phone
     }
 }
-export const addProjectToList = (nameProject) => {
+export const addProjectToList = (nameProject,url) => {
     return{
         type: ADD_PROJECT_TO_LIST,
-        nameProject
+        nameProject,
+        url
     }
 }
 export const addMemberToProject = (nameProject, listMember) => {

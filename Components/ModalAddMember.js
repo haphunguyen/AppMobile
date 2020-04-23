@@ -13,7 +13,8 @@ export default class ModalAddMember extends Component {
     }
 
     //Show and hide modal
-    _showAddModal = () => {
+    _showAddModal = (name,phone) => {
+        this.setState({name,phone})
         this.refs.AddMemberModal.open()
     }
     _closeModal = () => {
@@ -30,9 +31,11 @@ export default class ModalAddMember extends Component {
                     backdrop={true}
                 >
                     <TextInput placeholder='Ex: Ha Phu Nguyen' style={Styles.TextInput}
-                        onChangeText={(n) => this.setState({ name: n })} />
+                        onChangeText={(n) => this.setState({ name: n })} 
+                        value={this.state.name}/>
                     <TextInput placeholder='Ex: 0335566929' style={Styles.TextInput}
-                        onChangeText={(p) => this.setState({ phone: p })} />
+                        onChangeText={(p) => this.setState({ phone: p })} 
+                        value={this.state.phone}/>
 
 
                     <View style={Styles.ViewButton}>
@@ -70,8 +73,8 @@ const Styles = StyleSheet.create({
         alignItems: 'center'
     },
     Button: {
-        borderColor: 'skyblue',
-        borderWidth: 2,
+        borderColor: 'blue',
+        borderWidth: 1,
         padding: 10,
         margin: 5,
         borderRadius: 20,

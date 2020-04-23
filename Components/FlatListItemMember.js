@@ -12,28 +12,41 @@ class FlatListItemMember extends Component {
 
     //Call Action
     _AddMember(name, phone) {
-        this.props.addMember(name, phone)
+        const dataFile = this.props.dataMember
+        let index = dataFile.findIndex(item => item.name === name)
+        index > 0 ? alert('Please type diference name!') :
+            this.props.addMember(name, phone)
     }
 
     //ShowModal
-    _ShowAddMember() {
-        this.refs.AddMemberModal._showAddModal()
+    _ShowAddMember(name, phone) {
+        this.refs.AddMemberModal._showAddModal(name, phone)
     }
-    
+
     render() {
         const dataFile = this.props.dataMember
         return (
             <>
+                <View style={{ backgroundColor: 'white', flexDirection: 'row' }}>
+                    <View style={{ flex: 9, justifyContent: 'center', padding: 20, alignItems: 'center', }}>
+                        <Text style={{ fontSize: 20, }}>List Member</Text>
+                    </View>
+                    <TouchableOpacity style={{ justifyContent: 'center', flex: 1 }}
+                        onPress={() => { this._ShowAddMember() }}>
+                        <Text style={{ fontSize: 30, color: 'blue' }}>+</Text>
+                    </TouchableOpacity>
+                </View>
                 <FlatList
                     data={dataFile}
                     renderItem={({ item, index }) => {
                         return (
-                            <FlatListMember item={item} index={index} />
+                            <TouchableOpacity onPress={() => {}}>
+                                <FlatListMember item={item} index={index} />
+                            </TouchableOpacity>
                         )
                     }}
                     keyExtractor={(item) => item.name}
                 ></FlatList>
-                <Button style={Styles.Button} onPress={() => { this._ShowAddMember() }}>NEW MEMBER</Button>
                 <ModalAddMember ref={'AddMemberModal'} parentModal={this} />
             </>
         )
@@ -72,8 +85,8 @@ const Styles = StyleSheet.create({
         backgroundColor: 'white',
         paddingLeft: 30,
         padding: 8,
-        borderWidth: 0.5,
-        borderColor: 'grey'
+        // borderWidth: 0.5,
+        // borderColor: 'grey'
     },
     Text: {
         fontWeight: 'bold',

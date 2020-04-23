@@ -8,17 +8,20 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import FlatListItemProject from './FlatListItemProject'
 import FlatListItemMember from './FlatListItemMember'
+import Home from './Home'
 
 const Tab = createBottomTabNavigator()
 
 export default class Main extends Component {
     render() {
+        console.disableYellowBox = true;
         return (
             <>
                 <Provider store={Store}>
                     <View style={Styles.Container}>
                         <NavigationContainer>
-                            <Tab.Navigator>
+                            <Tab.Navigator >
+                                <Tab.Screen name="Home" component={Home} />
                                 <Tab.Screen name="Member" component={FlatListItemMember} />
                                 <Tab.Screen name="Project" component={FlatListItemProject} />
                             </Tab.Navigator>

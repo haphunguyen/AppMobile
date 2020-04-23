@@ -11,8 +11,13 @@ import ModalAddProject from './ModalAddProject'
 class FlatListItemProject extends Component {
 
     //Call action
-    _AddProject(nameProject) {
-        this.props.addProject(nameProject);
+    _AddProject(nameProject,url) {
+        const dataFile = this.props.dataProject;
+        let index = dataFile.findIndex(item => item.nameProject == nameProject)
+        let newUrl = url.length >0 ? url :  'https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png'
+        
+        index > 0 ? alert('Please type diference nameProject') :
+            this.props.addProject(nameProject,newUrl);
     }
     _AddMemberToProject(nameProject, listMember) {
         this.props.addMemberToProject(nameProject, listMember);
@@ -29,8 +34,18 @@ class FlatListItemProject extends Component {
 
     render() {
         const dataFile = this.props.dataProject;
+
         return (
             <>
+                <View style={{  backgroundColor: 'white', flexDirection: 'row' }}>
+                    <View style={{  flex: 9,justifyContent: 'center', padding: 20, alignItems: 'center', }}>
+                        <Text style={{fontSize: 20,}}>List Project</Text>
+                    </View>
+                    <TouchableOpacity style={{ justifyContent: 'center', flex: 1 }}
+                    onPress={() => { this._ShowAddProject() }}>
+                        <Text style={{ fontSize: 30, color: 'blue' }}>+</Text>
+                    </TouchableOpacity>
+                </View>
                 <FlatList
                     data={dataFile}
                     renderItem={({ item, index }) => {
@@ -40,8 +55,6 @@ class FlatListItemProject extends Component {
                     }}
                     keyExtractor={(item) => item.nameProject}
                 ></FlatList>
-
-                <Button style={{ margin: 10 }} onPress={() => { this._ShowAddProject() }}>NEW PROJECT</Button>
 
                 <ModalAddProject ref='AddProjectModal' parentModal={this} />
                 <ModalAddMemberToProject ref='AddMemberToProjectModal' parentModal={this} />
@@ -73,7 +86,7 @@ function mapStateToProps(state) {
 }
 function mapDispatchToProps(dispatch) {
     return {
-        addProject: (nameProject) => { dispatch(addProjectToList(nameProject)) },
+        addProject: (nameProject,url) => { dispatch(addProjectToList(nameProject,url)) },
         addMemberToProject: (nameProject, listMember) => { dispatch(addMemberToProject(nameProject, listMember)) }
     }
 }
@@ -86,8 +99,8 @@ const Styles = StyleSheet.create({
     Container: {
         backgroundColor: 'white',
         padding: 18,
-        borderWidth: 0.5,
-        borderColor: 'grey',
+        // borderWidth: 0.5,
+        // borderColor: 'grey',
         paddingLeft: 30
     },
     Text: {
@@ -116,8 +129,8 @@ const Styles = StyleSheet.create({
         alignItems: 'center'
     },
     Button: {
-        borderColor: 'skyblue',
-        borderWidth: 2,
+        borderColor: 'blue',
+        borderWidth: 1,
         padding: 10,
         margin: 5,
         borderRadius: 20,

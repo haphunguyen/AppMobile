@@ -8,6 +8,7 @@ export default class ModalAddProject extends Component {
         super(props);
         this.state = {
             nameProject: '',
+            url: ''
         }
     }
 
@@ -19,6 +20,7 @@ export default class ModalAddProject extends Component {
         this.refs.AddProjectModal.close();
     }
     render() {
+        const { nameProject, url } = this.state
         return (
             <>
                 <Modal
@@ -29,13 +31,15 @@ export default class ModalAddProject extends Component {
                 >
                     <TextInput placeholder='Ex: GrabHotel' style={Styles.TextInput}
                         onChangeText={(n) => this.setState({ nameProject: n })} />
+                    <TextInput placeholder='Ex: http://uri.png' style={Styles.TextInput}
+                        onChangeText={(u) => this.setState({ url: u })} />
                     <View style={Styles.ViewButton}>
                         <Button style={Styles.Button} onPress={() => {
-                            if (this.state.nameProject == '') {
+                            if (nameProject == '') {
                                 alert('Pleasy type enough data!')
                                 return;
                             } else {
-                                this.props.parentModal._AddProject(this.state.nameProject)
+                                this.props.parentModal._AddProject(nameProject,url)
                                 this._closeModal()
                             }
                         }} >Save</Button>
@@ -74,8 +78,8 @@ const Styles = StyleSheet.create({
         alignItems: 'center'
     },
     Button: {
-        borderColor: 'skyblue',
-        borderWidth: 2,
+        borderColor: 'blue',
+        borderWidth: 1,
         padding: 10,
         margin: 5,
         borderRadius: 20,
